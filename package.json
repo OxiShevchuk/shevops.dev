@@ -1,0 +1,22 @@
+{
+  "name": "shevops.dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OxiShevchuk/shevops.dev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OxiShevchuk/shevops.dev/issues"
+  },
+  "homepage": "https://github.com/OxiShevchuk/shevops.dev#readme",
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+}
