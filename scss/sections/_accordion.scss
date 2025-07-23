@@ -1,0 +1,17 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+.testimonials-section {
+    @media (max-width: 768px) {
+        img {
+            width: 100%;
+        }
+    }
+    .accordion-item {
+        margin: 1rem;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        button {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+}

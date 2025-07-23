@@ -1,0 +1,22 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+
+.services {
+    background-color: $white;
+    line-height: 2rem;
+    .card {
+        border: 1px solid rgba($secondary, .1);
+    }
+    .icon {
+        width: 6rem;
+        height: 6rem;
+        background-color: $secondary;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        i {
+            font-size: 3rem;
+            line-height: 6rem;
+            color: $white;
+        }
+    }
+}

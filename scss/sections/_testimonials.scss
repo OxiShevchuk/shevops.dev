@@ -1,0 +1,52 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+
+.testimonials-section {
+    .carousel-wrapper {
+        width: 100%;
+
+        .carouselItems {
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+
+            item {
+                flex: 0 0 100%; /* mobile default (1 item per view) */
+                max-width: 100%;
+                padding: 10px;
+            }
+            @media (min-width: 768px) {
+                .carousel-item {
+                    flex: 0 0 50%; /* 2 items per view on md+ */
+                    max-width: 50%;
+                }
+            }
+        }
+    }
+    .card-body {
+        margin: 1rem;
+        @include gradient(to right top);
+        color: $white;
+        border: 1px solid $secondary;
+        border-radius: .5rem;
+        .stars {
+            color: $btn-primary;
+            .half-star {
+                font-size: 90%;
+            }
+        }
+        .card-title {
+            font-size: 1.375rem;
+            font-weight: bold;
+        }
+        .card-photo {
+            display: flex;
+            align-items: center;   /* vertical centering */
+            justify-content: center; 
+            img {
+                width: 100%;
+                @include testimonial-photo-border;
+                border-radius: 50%; 
+            }
+        }
+    }
+}

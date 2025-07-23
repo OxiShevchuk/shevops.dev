@@ -1,0 +1,72 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+
+.btn-rounded {
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
+    @include media-breakpoint-between(lg, xl) {
+        font-size: .9rem;
+    }
+    position: relative;
+    padding: .9375rem 3.975rem .9375rem 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    // border: .1rem solid rgba($white, .6);
+    border: none;
+    background-color: $white;
+    text-decoration: none;
+    color: $black;
+    .upwork {
+        position: static;
+        color: $upwork-color;
+        background-color: transparent;
+    }
+
+    .circle-wrapper {  
+        position: absolute;
+        background-color: $upwork-color;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 50%;
+        right: 7px;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .fas,.far {
+            color: $white;
+            line-height: 2.5rem;
+            font-weight: 700;
+        }
+    }
+
+    &:hover {
+        @include nav-btn-gradient; 
+        color: $white;
+        font-weight: 500;
+        .upwork {
+            position: static;
+            color: $white;
+            background-color: transparent;
+        }
+        span {
+            background-color: rgba($white, .2);
+        }
+    }
+}
+.nav-btn {
+    &:hover {
+        @include nav-btn-gradient;
+    }
+}
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  border: 1px solid $secondary;
+  border-radius: 50%;
+  background-color: $secondary;
+}

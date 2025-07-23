@@ -1,0 +1,26 @@
+@use "../custom" as *;
+
+// GRADIENT MIXIN
+@mixin gradient($direction: to right) {
+    background: linear-gradient($direction, rgba($primary, .95), rgba($secondary, .95)); 
+}
+@mixin btn-gradient($direction: to right) {
+    background: linear-gradient($direction, rgba($btn-primary, .95), rgba($btn-secondary, .95)); 
+}
+@mixin nav-btn-gradient($direction: to right) {
+    background: linear-gradient($direction, rgba($secondary, .95), rgba($primary, .95)); 
+}
+@mixin counter-gradient {
+    background: linear-gradient(to right, rgba($counter-primary, .95), rgba($counter-secondary, .95)); 
+}
+@mixin testimonial-photo-border {
+    border: .5px solid linear-gradient(to right, rgba($primary, .95), rgba($secondary, .95));
+}
+
+// ABSOLUTE CENTER
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

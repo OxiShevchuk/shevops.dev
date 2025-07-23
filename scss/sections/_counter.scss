@@ -1,0 +1,25 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+
+.counter-section {
+    @include counter-gradient;
+    .card {
+        --bs-card-bg: none;
+        border: none;
+        color: $white;
+
+        i {
+            font-size: 3rem;
+            line-height: 3rem;
+        }
+        .card-title {
+            margin: auto;
+        }
+        .card-text {
+            margin: auto;
+            font-size: 4rem;
+            font-weight: bold;
+            font-family: $header-font;
+        }
+    }
+}
