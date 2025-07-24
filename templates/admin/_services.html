@@ -1,0 +1,130 @@
+<section class="services mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Services</h2>
+                <button type="button" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addService">Add a new Service</button>
+                <table class="table table-striped fs-6">
+                <thead class="thead-dark">
+                    <tr>
+                    <th>Icon Code</th>
+                    <th>Icon Image</th>
+                    <th>Service Name</th>
+                    <th>Description</th>
+                    <th></th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for service in services %}
+                    <tr>
+                    <td>{{ service.icon }}</td>
+                    <td class="fs-2"><i class="{{ service.icon }}"></i></td>
+                    <td>{{ service.name }}</td>
+                    <td>{{ service.description }}</td>
+                    <td>
+                        <button
+                                class="btn btn-warning edit-service-btn"
+                                data-id="{{ service.id }}"
+                                data-icon="{{ service.icon }}"
+                                data-name="{{ service.name }}"
+                                data-desc="{{ service.description }}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editService"
+                                >
+                        Edit
+                        </button>
+                    </td>
+                    <td><button class="btn btn-danger delete-service-btn" data-id="{{ service.id }}" data-bs-toggle="modal" data-bs-target="#deleteService">Delete</button></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addService" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/addservice">
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label" for="add-icon">Icon</label>
+              <input type="text" name="icon" id="add-icon" class="form-control" required />
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label" for="add-name">Service's Name</label>
+              <input type="text" name="name" id="add-name" class="form-control" required />
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label" for="add-desc">Service's Description</label>
+              <textarea name="desc" id="add-desc" class="form-control" required></textarea>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Create a new Service</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editService" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editService1Label">Editing Service</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="edit-service-form">
+          <input type="hidden" name="id" id="edit-service-id">
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="edit-service-icon">Icon</label>
+            <input type="text" name="icon" id="edit-service-icon" class="form-control" />
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="edit-service-name">Service's Name</label>
+            <input type="text" name="name" id="edit-service-name" class="form-control" />
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="edit-service-desc">Service's Description</label>
+            <textarea name="desc" id="edit-service-desc" class="form-control"></textarea>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Update Service</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteService1Label">Deleting Service</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure about deleting this Service?
+      </div>
+      <div class="modal-footer">
+        <form method="POST" id="delete-service-form">
+          <input type="hidden" name="id" id="delete-id" >
+          <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    111
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Oksana Shevchuk | Web Development & AWS Deployment Solutions{% endblock %}
+
+{% block content %}
+<!--  START OF INTRO SECTION-->
+{% include 'home/_intro-section.html' %}
+<!-- END OF INTRO SECTION -->
+
+<!-- START THE SERVICES SECTION -->
+{% include 'services/public.html' %}
+<!-- END THE SERVICES SECTION -->
+
+<!-- START THE COUNTER SECTION -->
+{% include 'home/_counter.html' %}
+<!-- END THE COUNTER SECTION -->
+
+<!-- START THE WHY-CHOSE-ME SECTION -->
+{% include 'home/_why-chose-me.html' %}
+<!-- END THE WHY-CHOSE-ME SECTION -->
+
+<!-- START THE TESTIMONIALS SECTION -->
+{% include 'home/_testimonials.html' %}
+<!-- END THE TESTIMONIALS SECTION -->
+{% endblock %}
