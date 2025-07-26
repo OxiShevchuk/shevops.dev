@@ -24,21 +24,18 @@ with app.app_context():
 
 
 # import and register all Blueprints
+from admin import admin_bp
+app.register_blueprint(admin_bp, url_prefix='/admin')
 
 from services.routes import services_bp
 app.register_blueprint(services_bp, url_prefix="/services")
+
 
 @app.route("/")
 def home():
     services = Service.query.all()
     print(services[0].name)
     return render_template("index.html", services=services)
-
-
-# @app.route("/admin")
-# def admin():
-#     services = Service.query.all()
-#     return render_template("dashboard.html", services=services)
 
 
 

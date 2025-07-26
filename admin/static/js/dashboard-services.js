@@ -6,13 +6,14 @@ const editServiceIcon = document.getElementById('edit-service-icon');
 const editServiceName = document.getElementById('edit-service-name');
 const editServiceDesc = document.getElementById('edit-service-desc');
 
+
 editServiceButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         editServiceId.value = btn.dataset.id;
         editServiceIcon.value = btn.dataset.icon;
         editServiceName.value = btn.dataset.name;
         editServiceDesc.value = btn.dataset.desc;
-        editServiceForm.action = "/editservice/" + editServiceId.value;
+        editServiceForm.action = "/admin/editservice/" + editServiceId.value;
     });
 });
 
@@ -22,7 +23,8 @@ const deleteServiceButtons = document.querySelectorAll('.delete-service-btn');
 
 deleteServiceButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        console.log(btn.dataset.id);
         deleteServiceId.value = btn.dataset.id;
-        deleteServiceForm.action = "/deleteservice/" + deleteServiceId.value;
+        deleteServiceForm.action = "/admin/deleteservice/" + deleteServiceId.value;
     });
 });

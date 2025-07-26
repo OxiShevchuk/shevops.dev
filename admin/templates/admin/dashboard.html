@@ -1,0 +1,14 @@
+{% extends 'admin/base.html' %}
+{% block title %}Oksana Shevchuk | Admin panel{% endblock %}
+
+{% block content %}
+<!--  START OF SERVICES SECTION-->
+{% include 'admin/dashboard-services.html' %}
+{% include 'admin/components/modals/services-modal.html' %}
+
+<!-- END OF SERVICES SECTION -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('admin.static', filename='js/dashboard-services.js') }}"></script>
+{% endblock %}
