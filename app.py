@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 import os
 import html
 
-from services.models import db, Service
+from blueprints.services.models import db, Service
+from blueprints.faq.models import db, Faq
 
 load_dotenv()  # This loads variables from .env
 
@@ -24,11 +25,14 @@ with app.app_context():
 
 
 # import and register all Blueprints
-from admin import admin_bp
+from blueprints.admin.routes import admin_bp
 app.register_blueprint(admin_bp, url_prefix='/admin')
 
-from services.routes import services_bp
+from blueprints.services.routes import services_bp
 app.register_blueprint(services_bp, url_prefix="/services")
+
+from blueprints.faq.routes import faq_bp
+app.register_blueprint(faq_bp, url_prefix="/faq")
 
 
 @app.route("/")

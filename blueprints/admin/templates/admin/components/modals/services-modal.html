@@ -9,16 +9,16 @@
       <div class="modal-body">
         <form method="POST" action="{{ url_for('admin.add_service') }}">
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="add-icon">Icon</label>
-              <input type="text" name="icon" id="add-icon" class="form-control" required />
+              <label class="form-label" for="add-service-icon">Icon</label>
+              <input type="text" name="icon" id="add-service-icon" class="form-control" required />
             </div>
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="add-name">Service's Name</label>
-              <input type="text" name="name" id="add-name" class="form-control" required />
+              <label class="form-label" for="add-service-name">Service's Name</label>
+              <input type="text" name="name" id="add-service-name" class="form-control" required />
             </div>
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="add-desc">Service's Description</label>
-              <textarea name="desc" id="add-desc" class="form-control" required></textarea>
+              <label class="form-label" for="add-service-desc">Service's Description</label>
+              <textarea name="desc" id="add-service-desc" class="form-control" required></textarea>
             </div>
             <!-- Submit button -->
             <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Create a new Service</button>

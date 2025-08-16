@@ -1,7 +1,7 @@
 from extensions import db
 
 
-class FAQ(db.Model):
+class Faq(db.Model):
     __tablename__ = 'faq'
 
     fid = db.Column(db.Integer, primary_key=True)
