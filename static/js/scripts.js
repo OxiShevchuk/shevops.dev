@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/**********************************************************
+
 const track = document.getElementById('carouselItems');// The container holding all carousel items
 
 let items = document.querySelectorAll('#carouselItems .item');// Select all original carousel items
@@ -177,7 +177,7 @@ const carouselObserver = new IntersectionObserver((entries) => {
 
 // Start observing carousel wrapper
 carouselObserver.observe(carouselWrapper);
-**************************************************/
+
 
 //Back to Top Button
 //Get the button

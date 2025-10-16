@@ -12,12 +12,12 @@ body {
     }
 }
 .display-2 {
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
     text-transform: capitalize;
     font-family: $header-font;
 
     &--intro {
-        font-size: 3rem;
         display: inline-block;
         font-weight: 700;
         font-family: $header-font;
@@ -29,4 +29,7 @@ body {
         text-transform: none;
         margin-bottom: 2rem;
     }
+}
+.display-5 {
+    font-size: 2rem;
 }

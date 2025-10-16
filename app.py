@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
-from extensions import db
+from extensions import db, login_manager
 from dotenv import load_dotenv
 import os
 import html
+from flask_login import LoginManager
 
+from blueprints.main import main_bp
 from blueprints.services.models import db, Service
 from blueprints.faq.models import db, Faq
 
@@ -17,6 +19,10 @@ Bootstrap5(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# python -c "import secrets; print(secrets.token_hex(32))"
+# to generate a secret key
+app.secret_key = os.getenv("SECRET_KEY")
+
 db.init_app(app)
 
 # Create DB
@@ -24,7 +30,21 @@ with app.app_context():
     db.create_all()
 
 
+
+# ---- Flask-Login setup ----
+login_manager.init_app(app)
+login_manager.login_view = "auth.login" # redirect here if @login_required fails
+login_manager.login_message = "You must log in to continue."
+login_manager.login_message_category = "warning"
+
+
+
 # import and register all Blueprints
+app.register_blueprint(main_bp)
+
+from blueprints.auth.routes import auth_bp
+app.register_blueprint(auth_bp, url_prefix=None)
+
 from blueprints.admin.routes import admin_bp
 app.register_blueprint(admin_bp, url_prefix='/admin')
 
@@ -35,11 +55,11 @@ from blueprints.faq.routes import faq_bp
 app.register_blueprint(faq_bp, url_prefix="/faq")
 
 
-@app.route("/")
-def home():
-    services = Service.query.all()
-    print(services[0].name)
-    return render_template("index.html", services=services)
+# @app.route("/")
+# def home():
+#     services = Service.query.all()
+#     faqs = Faq.query.all()
+#     return render_template("index.html", services=services, faqs=faqs)
 
 
 

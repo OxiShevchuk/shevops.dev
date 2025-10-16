@@ -9,10 +9,6 @@
       <div class="modal-body">
         <form method="POST" action="{{ url_for('admin.add_faq') }}">
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="add-faq-order">FAQ's Order</label>
-              <input type="text" name="order" id="add-faq-order" class="form-control" required />
-            </div>
-            <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label" for="add-faq-title">FAQ's Title</label>
               <input type="text" name="title" id="add-faq-title" class="form-control" required />
             </div>
@@ -29,20 +25,16 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="editService" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="editFaq" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editService1Label">Editing FAQ </h1>
+        <h1 class="modal-title fs-5" id="editFaqLabel">Editing FAQ </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form method="POST" id="edit-faq-form">
           <input type="hidden" name="id" id="edit-faq-id">
-          <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="edit-faq-order">Order</label>
-            <input type="text" name="icon" id="edit-faq-order" class="form-control" />
-          </div>
           <div data-mdb-input-init class="form-outline mb-4">
             <label class="form-label" for="edit-faq-title">FAQ's Title</label>
             <input type="text" name="title" id="edit-faq-title" class="form-control" />
@@ -60,7 +52,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="deleteFAQ" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteFaq" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Login{% endblock %}
+{% block content %}
+	<div class="container">
+		<h1>Login Page</h1>
+		{% if current_user.is_authenticated %}
+			<h2>Hi, {{ current_user.username }}!</h2> <p>You've already logged in</p>
+			<a href="{{ url_for('auth.logout') }}">Logout</a>
+		{% else %}
+  			{{ render_form(form) }}
+			<p>Login={{ form.username.data }}</p>
+			<p>Password={{ form.password.data }}</p>
+		{% endif %}
+
+	</div>
+{% endblock %}

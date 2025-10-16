@@ -1,4 +1,4 @@
-<section class="services mt-5">
+<section class="services mt-5" id="services">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -9,19 +9,19 @@
                     <table class="table table-striped fs-6">
                     <thead class="thead-dark">
                         <tr>
-                        <th>Icon Code</th>
-                        <th>Icon Image</th>
-                        <th>Service Name</th>
-                        <th>Description</th>
-                        <th></th>
-                        <th></th>
+                        <th width="14%">Icon Code</th>
+                        <th width="12%">Icon Image</th>
+                        <th width="14%">Service Name</th>
+                        <th width="40%">Description</th>
+                        <th width="10%"></th>
+                        <th width="10%"></th>
                         </tr>
                     </thead>
-                    <tbody id="sortable">
+                    <tbody>
                     {% for service in services %}
-                        <tr draggable="true">
+                        <tr>
                         <td>{{ service.icon }}</td>
-                        <td class="fs-2"><i class="{{ service.icon }}"></i></td>
+                        <td class="fs-2 text-center"><i class="{{ service.icon }}"></i></td>
                         <td>{{ service.name }}</td>
                         <td>{{ service.description }}</td>
                         <td>

@@ -1,0 +1,14 @@
+.table-col-icons {
+    min-width: 130px;  /* enough to keep arrows side by side */
+    white-space: nowrap; /* prevent wrapping */
+    text-align: center; /* optional: center the icons */
+}
+.table-col-icons i:hover {
+    cursor: pointer;
+}
+.td-grey {
+    color: grey;
+}
+.navbar-dashboard {
+    --bs-navbar-padding-y: 0;
+}

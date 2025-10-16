@@ -8,4 +8,4 @@ services_bp = Blueprint("services", __name__, template_folder="templates")
 @services_bp.route('/')
 def public_services():
     services = Service.query.all()
-    return render_template('services/public.html', services=services)
+    return render_template('services/list.html', services=services)

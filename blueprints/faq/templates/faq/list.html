@@ -1,0 +1,45 @@
+<section class="whychoseme-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h4 class="fw-bold lead mb-3 display-5 text-center">Why choose me?</h4></div>
+            <div class="col-md-6 p-4">
+                <img src="{{ url_for('static', filename='assets/img/why-chose-me.png') }}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 p-4">
+                <div class="accordion" id="accordionExample">
+                    {% set i = namespace(value=0) %}
+                    {% for faq in faqs %}
+                        {% set i.value = i.value + 1 %}
+                        {% if i.value == 1 %}
+                    <div class="accordion-item rounded-5 mt-2 shadow">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button rounded-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ i.value }}" aria-expanded="true" aria-controls="collapse{{ i.value }}">
+                            {{ faq.title }}
+                        </button>
+                        </h2>
+                        <div id="collapse{{ i.value }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            {{ faq.description }}
+                        </div>
+                        </div>
+                    </div>
+                        {% else %}
+                    <div class="accordion-item rounded-5 mt-2 shadow">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed rounded-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ i.value }}" aria-expanded="true" aria-controls="collapse{{ i.value }}">
+                            {{ faq.title }}
+                            </button>
+                        </h2>
+                        <div id="collapse{{ i.value }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                {{ faq.description }}
+                            </div>
+                        </div>
+                    </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

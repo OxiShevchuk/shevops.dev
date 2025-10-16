@@ -1,24 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 {% block title %}Oksana Shevchuk | Web Development & AWS Deployment Solutions{% endblock %}
 
 {% block content %}
 <!--  START OF INTRO SECTION-->
-{% include 'home/_intro-section.html' %}
+{% include 'main/includes/_intro.html' %}
 <!-- END OF INTRO SECTION -->
 
 <!-- START THE SERVICES SECTION -->
-{% include 'services/public.html' %}
+{% include 'services/list.html' %}
 <!-- END THE SERVICES SECTION -->
 
 <!-- START THE COUNTER SECTION -->
-{% include 'home/_counter.html' %}
+{% include 'main/includes/_counter.html' %}
 <!-- END THE COUNTER SECTION -->
 
 <!-- START THE WHY-CHOSE-ME SECTION -->
-{% include 'faq/public.html' %}
+{% include 'faq/list.html' %}
 <!-- END THE WHY-CHOSE-ME SECTION -->
 
 <!-- START THE TESTIMONIALS SECTION -->
-{% include 'home/_testimonials.html' %}
+{% include 'main/includes/_testimonials.html' %}
 <!-- END THE TESTIMONIALS SECTION -->
 {% endblock %}
