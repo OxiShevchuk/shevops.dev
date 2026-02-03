@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
-from extensions import db, login_manager
+from extensions import db, migrate, login_manager
 from dotenv import load_dotenv
 import os
 import html
@@ -9,7 +9,8 @@ from flask_login import LoginManager
 
 from blueprints.main import main_bp
 from blueprints.services.models import db, Service
-from blueprints.faq.models import db, Faq
+from blueprints.why_choose_me.models import db, Reason
+
 
 load_dotenv()  # This loads variables from .env
 
@@ -24,6 +25,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = os.getenv("SECRET_KEY")
 
 db.init_app(app)
+migrate.init_app(app, db)
+
 
 # Create DB
 with app.app_context():
@@ -51,8 +54,8 @@ app.register_blueprint(admin_bp, url_prefix='/admin')
 from blueprints.services.routes import services_bp
 app.register_blueprint(services_bp, url_prefix="/services")
 
-from blueprints.faq.routes import faq_bp
-app.register_blueprint(faq_bp, url_prefix="/faq")
+from blueprints.why_choose_me.routes import why_choose_me_bp
+app.register_blueprint(why_choose_me_bp, url_prefix="/why_choose_me")
 
 
 # @app.route("/")

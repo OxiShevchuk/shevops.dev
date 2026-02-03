@@ -1,0 +1,74 @@
+<!-- Modal -->
+<div class="modal fade" id="addWhyChooseMe" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add "Why Choose Me" item</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{ url_for('admin.add_why_choose_me') }}">
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label" for="add-reason-title">"Why Choose Me" item's Title</label>
+              <input type="text" name="title" id="add-reason-title" class="form-control" required />
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label" for="add-reason-desc">"Why Choose Me" item's Description</label>
+              <textarea name="desc" id="add-reason-desc" class="form-control" required></textarea>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Create a new "Why Choose Me" Item</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editWhyChooseMe" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editFaqLabel">Editing "Why Choose Me" item</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="edit-reason-form">
+          <input type="hidden" name="id" id="edit-reason-id">
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="edit-reason-title">"Why Choose Me" item's Title</label>
+            <input type="text" name="title" id="edit-reason-title" class="form-control" />
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="edit-reason-desc">"Why Choose Me" item's Description</label>
+            <textarea name="desc" id="edit-reason-desc" class="form-control"></textarea>
+          </div>
+          <!-- Submit button -->
+          <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Update FAQ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteWhyChooseMe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteFAQLabel">Deleting "Why Choose Me" item</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure about deleting this "Why Choose Me" item?
+      </div>
+      <div class="modal-footer">
+        <form method="POST" id="delete-reason-form">
+          <input type="hidden" name="id" id="delete-reason-id" >
+          <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

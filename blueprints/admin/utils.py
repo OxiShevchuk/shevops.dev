@@ -1,12 +1,12 @@
 from extensions import db
-from blueprints.faq.models import Faq  # import your model
+from blueprints.why_choose_me.models import Reason  # import your model
 
 
 def resort_order(): # Resorting after: 1) Adding a new FAQ; 2) Deleting a FAQ; 3) Changing sort_order position in the list
-    faqs = Faq.query.order_by(Faq.sort_order, Faq.fid).all()
+    reasons = Reason.query.order_by(Reason.sort_order, Reason.id).all()
     next_order = 1
-    for faq in faqs:
-        if faq.sort_order != next_order:
-            faq.sort_order = next_order
+    for reason in reasons:
+        if reason.sort_order != next_order:
+            reason.sort_order = next_order
         next_order += 1
     db.session.commit()

@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, jsonify
 from sqlalchemy import func
-from blueprints.faq.models import Faq
+from blueprints.why_choose_me.models import Reason
 from blueprints.services.models import Service
 from extensions import db
 from . import admin_bp
@@ -13,15 +13,16 @@ import html
 @login_required
 def dashboard():
     services = Service.query.all()
-    faqs = Faq.query.order_by(Faq.sort_order, Faq.fid).all()
-    return render_template('admin/dashboard.html', services=services, faqs=faqs, user=current_user)
+    reasons = Reason.query.order_by(Reason.sort_order, Reason.id).all()
+    return render_template('admin/dashboard.html', services=services, reasons=reasons, user=current_user)
 
 
-@admin_bp.route('/faqs')
+@admin_bp.route('/why-choose-me')
 @login_required
-def faqs():
-    faqs = Faq.query.order_by(Faq.sort_order, Faq.fid).all()
-    return render_template('admin/faq.html', faqs=faqs, user=current_user)
+def why_choose_me():
+    reasons = Reason.query.order_by(Reason.sort_order, Reason.id).all()
+    print(reasons)
+    return render_template('admin/why-choose-me.html', reasons=reasons, user=current_user)
 
 @admin_bp.route('/services')
 @login_required
@@ -62,68 +63,68 @@ def delete_service(id):
     return redirect(url_for('admin.dashboard'))
 
 
-@admin_bp.route('/addfaq', methods=['POST'])
+@admin_bp.route('/addwhychooseme', methods=['POST'])
 @login_required
-def add_faq():
+def add_why_choose_me():
     title = html.escape(request.form['title'])
     desc = html.escape(request.form['desc'])
-    new_faq = Faq(sort_order=None, title=title, description=desc)
-    db.session.add(new_faq)
+    new_whychooseme = Reason(sort_order=None, title=title, description=desc)
+    db.session.add(new_whychooseme)
     db.session.commit()
     resort_order() # Resorting after: 1) Adding a new FAQ; 2) Deleting a FAQ; 3) Changing orders
-    return redirect(url_for('admin.dashboard') + "#faq")
+    return redirect(url_for('admin.dashboard') + "#why-choose-me")
 
 
-@admin_bp.route('/editfaq/<int:id>', methods=['POST'])
+@admin_bp.route('/editwhychooseme/<int:id>', methods=['POST'])
 @login_required
-def edit_faq(id):
-    faq = Faq.query.get_or_404(id)
-    faq.title = html.escape(request.form['title'])
-    faq.description = html.escape(request.form['desc'])
+def edit_why_choose_me(id):
+    reason = Reason.query.get_or_404(id)
+    reason.title = html.escape(request.form['title'])
+    reason.description = html.escape(request.form['desc'])
     db.session.commit()
-    return redirect(url_for('admin.dashboard') + "#faq")
+    return redirect(url_for('admin.dashboard') + "#why-choose-me")
 
 
-@admin_bp.route('/deletefaq/<int:id>', methods=['POST'])
+@admin_bp.route('/deletewhychooseme/<int:id>', methods=['POST'])
 @login_required
-def delete_faq(id):
-    faq = Faq.query.get_or_404(id)
-    db.session.delete(faq)
+def delete_why_choose_me(id):
+    reason = Reason.query.get_or_404(id)
+    db.session.delete(reason)
     db.session.commit()
     resort_order() # Resorting after: 1) Adding a new FAQ; 2) Deleting a FAQ; 3) Changing sort_order position in the list
-    return redirect(url_for('admin.dashboard') + "#faq")
+    return redirect(url_for('admin.dashboard') + "#why-choose-me")
 
 
-@admin_bp.route('/reorderfaq', methods=['POST'])
+@admin_bp.route('/reorderwhychooseme', methods=['POST'])
 @login_required
 def reorder_faq():
     data = request.get_json()
-    faq_id = data.get('id')
+    reason_id = data.get('id')
     direction = data.get('direction')
     # Get current row
-    current = db.session.query(Faq).with_for_update().filter(Faq.fid==faq_id).one()
+    current = db.session.query(Reason).with_for_update().filter(Reason.id==reason_id).one()
     
     resort_order() # Resorting after: 1) Adding a new FAQ; 2) Deleting a FAQ; 3) Changing sort_order position in the list
     # return jsonify({"success": True})
 
     # Get the current faq
-    faq = Faq.query.get(faq_id)
+    reason = Reason.query.get(reason_id)
     
     # If there is no such id
-    if not faq: 
+    if not reason: 
         db.session.rollback()
-        return jsonify({"error": "Faq not found"}), 404 
+        return jsonify({"error": "Reason not found"}), 404 
     
     # If the admin is trying to move the first row up, or the last one down
-    faq_len = db.session.query(Faq).count()
-    if (current.sort_order == 1 and direction == "up") or (current.sort_order == faq_len and direction == "down"):
+    reason_len = db.session.query(Reason).count()
+    if (current.sort_order == 1 and direction == "up") or (current.sort_order == reason_len and direction == "down"):
         db.session.rollback()
         return jsonify({"error": "Cannot move further"}), 404
     
     if direction == 'up':
-        neighbor = db.session.query(Faq).with_for_update().filter(Faq.sort_order==current.sort_order - 1).one()
+        neighbor = db.session.query(Reason).with_for_update().filter(Reason.sort_order==current.sort_order - 1).one()
     elif direction == 'down':
-        neighbor = db.session.query(Faq).with_for_update().filter(Faq.sort_order==current.sort_order + 1).one()
+        neighbor = db.session.query(Reason).with_for_update().filter(Reason.sort_order==current.sort_order + 1).one()
     else:
         db.session.rollback()
         return jsonify({"error": "Invalid direction"}), 400

@@ -1,24 +1,24 @@
-<section class="faq mt-5" id="faq">
+<section class="why-choose-me mt-5" id="why-choose-me">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow">
                     <h2 class="card-header">Why choose me</h2>
                     <div class="card-body">
-                        <button type="button" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFaq">Add a new FAQ</button>
+                        <button type="button" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addWhyChooseMe">Add a new "Why Choose Me" item</button>
                         <table class="table table-striped fs-6">
                         <thead class="thead-dark">
                             <tr>
-                            <th class="th-ordering">FAQ Order</th>
-                            <th>Faq Title</th>
-                            <th>FAQ Description</th>
+                            <th class="th-ordering">Order</th>
+                            <th>Title</th>
+                            <th>Description</th>
                             <th></th>
                             <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         {% set i = namespace(value=0) %}
-                        {% for faq in faqs %}
+                        {% for reason in reasons %}
                             <tr>
                             {% set i.value = i.value + 1 %}
                             {% if i.value == 1 %}
@@ -27,23 +27,23 @@
                                     <button 
                                         type="button" 
                                         class="btn btn-sm btn-light fs-2" 
-                                        aria-label="Move faq down" 
+                                        aria-label="Move reason down" 
                                         title="Move down"
-                                        data-id="{{ faq.fid }}"
+                                        data-id="{{ reason.id }}"
                                         data-direction="down">
                                         <i class="bi bi-arrow-down-square"></i>
                                     </button>
                                 </span>
                             </td>
-                            {% elif i.value == faqs|length %}
+                            {% elif i.value == reasons|length %}
                             <td class="table-col-icons">
                                 <span class="td-ordering">
                                     <button 
                                         type="button" 
-                                        class="btn btn-up-{{ faq.sort_order }} btn-sm btn-light fs-2" 
-                                        aria-label="Move faq up" 
+                                        class="btn btn-up-{{ reason.sort_order }} btn-sm btn-light fs-2" 
+                                        aria-label="Move reason up" 
                                         title="Move up"
-                                        data-id="{{ faq.fid }}"
+                                        data-id="{{ reason.id }}"
                                         data-direction="up">
                                         <i class="bi bi-arrow-up-square"></i>
                                     </button>
@@ -53,40 +53,43 @@
                             <td class="table-col-icons">
                                 <button 
                                     type="button" 
-                                    class="btn btn-up-{{ faq.sort_order }} btn-sm btn-light fs-2" 
-                                    aria-label="Move faq up" 
+                                    class="btn btn-up-{{ reason.sort_order }} btn-sm btn-light fs-2" 
+                                    aria-label="Move reason up" 
                                     title="Move up"
-                                    data-id="{{ faq.fid }}"
+                                    data-id="{{ reason.id }}"
                                     data-direction="up">
                                     <i class="bi bi-arrow-up-square"></i>
                                 </button> 
                                 <button 
                                     type="button" 
-                                    class="btn btn-down-{{ faq.sort_order }} btn-sm btn-light fs-2" 
-                                    aria-label="Move faq down" 
+                                    class="btn btn-down-{{ reason.sort_order }} btn-sm btn-light fs-2" 
+                                    aria-label="Move reason down" 
                                     title="Move down"
-                                    data-id="{{ faq.fid }}"
+                                    data-id="{{ reason.id }}"
                                     data-direction="down">
                                     <i class="bi bi-arrow-down-square"></i>
                                 </button>
                             </td>
                             {% endif %}
-                            <td>{{ faq.title }}</td>
-                            <td>{{ faq.description }}</td>
+                            <td>{{ reason.title }}</td>
+                            <td>{{ reason.description }}</td>
                             <td>
                                 <button
-                                        class="btn btn-warning edit-faq-btn"
-                                        data-id="{{ faq.fid }}"
-                                        data-order="{{ faq.sort_order }}"
-                                        data-title="{{ faq.title }}"
-                                        data-desc="{{ faq.description }}"
+                                        class="btn btn-warning edit-reason-btn"
+                                        data-id="{{ reason.id }}"
+                                        data-order="{{ reason.sort_order }}"
+                                        data-title="{{ reason.title }}"
+                                        data-desc="{{ reason.description }}"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#editFaq"
+                                        data-bs-target="#editWhyChooseMe"
                                         >
                                 Edit
                                 </button>
                             </td>
-                            <td><button class="btn btn-danger delete-faq-btn" data-id="{{ faq.fid }}" data-bs-toggle="modal" data-bs-target="#deleteFaq">Delete</button></td>
+                            <td><button class="btn btn-danger delete-reason-btn" 
+                                        data-id="{{ reason.id }}" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deleteWhyChooseMe">Delete</button></td>
                             </tr>
                         {% endfor %}
                         </tbody>

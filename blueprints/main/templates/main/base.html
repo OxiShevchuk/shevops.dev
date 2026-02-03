@@ -46,23 +46,18 @@
             <a class="nav-link active" aria-current="page" href="{{ url_for('main.home') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="#services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Key Metrics</a>
+            <a class="nav-link" href="#counter">Key Metrics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQ</a>
+            <a class="nav-link" href="#whychoseme">Why Choose Me</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Testimonials</a>
+            <a class="nav-link" href="#testimonials">Testimonials</a>
           </li>
         </ul>
-        <a href="https://www.upwork.com/freelancers/~01688da9704b32046f" class="rounded-pill btn-rounded nav-btn">Let's connect on <span class="upwork">Upwork</span>
-          <span class="circle-wrapper">
-            <i class="far fa-comment-dots"></i> 
-          </span>
-        </a>
       </div>
     </div>
   </nav>
@@ -79,6 +74,7 @@
             >
       <i class="fas fa-arrow-up"></i>
     </button>
+    {% include "/main/footer.html" %}
     <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     {% block scripts %}{% endblock %}

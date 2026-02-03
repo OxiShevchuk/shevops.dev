@@ -1,0 +1,15 @@
+<footer class="mt-5 bg-dark text-light">
+    <div class="container py-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="Logo Image" class="logo">
+            </a>
+        </div>
+        <a href="https://www.upwork.com/freelancers/~01688da9704b32046f" class="rounded-pill btn-rounded nav-btn">Let's connect on <span class="upwork">Upwork</span>
+          <span class="circle-wrapper">
+            <i class="far fa-comment-dots"></i> 
+          </span>
+        </a>
+        <div class="small text-secondary">© {{ current_year }} • Design • Develop • Deploy</div>
+    </div>
+</footer>

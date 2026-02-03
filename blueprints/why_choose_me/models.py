@@ -1,10 +1,10 @@
 from extensions import db
 
 
-class Faq(db.Model):
-    __tablename__ = 'faq'
+class Reason(db.Model):
+    __tablename__ = 'reasons'
 
-    fid = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     sort_order = db.Column(db.Integer)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)

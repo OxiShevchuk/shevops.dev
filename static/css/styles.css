@@ -11995,15 +11995,12 @@ h6 {
   color: #fff;
   text-transform: capitalize;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .menu li a {
     font-size: 0.9rem;
   }
-}
-.menu a.navbar-brand img {
-  height: 30px;
 }
 
 .intro-section {
@@ -12140,6 +12137,10 @@ h6 {
   width: 100%;
   border: 0.5px solid linear-gradient(to right, rgba(31, 0, 152, 0.95), rgba(5, 215, 240, 0.95));
   border-radius: 50%;
+}
+
+footer img.logo {
+  height: 30px;
 }
 
 /*# sourceMappingURL=styles.css.map */

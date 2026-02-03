@@ -1,22 +1,13 @@
 {% extends 'admin/base.html' %}
-{% block title %}Oksana Shevchuk | Admin panel{% endblock %}
+{% block title %}ShevOps.Dev | Admin panel | {% endblock %}
 
 {% block content %}
-<!--  START OF SERVICES SECTION-->
-{% include 'admin/edit-services.html' %}
-{% include 'admin/components/modals/services-modal.html' %}
-
-<!-- END OF SERVICES SECTION -->
-
-
 <!--  START OF FAQ SECTION-->
 {% include 'admin/edit-why-choose-me.html' %}
 {% include 'admin/components/modals/why-choose-me-modal.html' %}
 <!-- END OF FAQ SECTION -->
-
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('admin.static', filename='js/dashboard-services.js') }}"></script>
 <script src="{{ url_for('admin.static', filename='js/dashboard-why-choose-me.js') }}"></script>
 {% endblock %}
